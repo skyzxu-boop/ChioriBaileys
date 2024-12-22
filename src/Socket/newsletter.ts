@@ -129,6 +129,14 @@ export const makeNewsletterSocket = (config: SocketConfig) => {
 				updates: { picture: '', settings: null }
 			})
 		},
+		
+		newsletterUnfollow: async(jid: string) => {
+            await newsletterWMexQuery(jid, QueryIds.UNFOLLOW)
+        },
+
+        newsletterFollow: async(jid: string) => {
+            await newsletterWMexQuery(jid, QueryIds.FOLLOW)
+        },
 
 		newsletterAction: async(jid: string, type: 'follow' | 'unfollow' | 'mute' | 'unmute') => {
 			await newsletterWMexQuery(jid, type.toUpperCase() as QueryIds)
